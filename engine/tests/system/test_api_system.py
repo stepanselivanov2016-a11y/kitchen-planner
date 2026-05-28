@@ -1,11 +1,19 @@
 from uuid import uuid4
 
 from fastapi.testclient import TestClient
+import pytest
 
+from app.database import Base, engine
 from app.main import app
 
 
 client = TestClient(app)
+
+
+@pytest.fixture(scope="session", autouse=True)
+def prepare_database_schema():
+    Base.metadata.create_all(bind=engine)
+    yield
 
 
 def unique_login(prefix: str) -> str:
