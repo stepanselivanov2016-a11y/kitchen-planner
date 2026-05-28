@@ -1,0 +1,215 @@
+{
+  "semantic_rules": [
+    {
+      "id": "less_upper",
+      "patterns": [
+        "без\\s+лишн\\w*\\s+верхн\\w*",
+        "меньше\\s+верхн\\w*",
+        "минимум\\s+верхн\\w*",
+        "верх\\w*\\s+.*(минимум|поменьше)",
+        "не\\s+хочу\\s+много\\s+верхн"
+      ],
+      "patch": {
+        "room.wall_cabinets_enabled": false
+      }
+    },
+    {
+      "id": "more_upper_storage",
+      "patterns": [
+        "больше\\s+.*хранен\\w*\\s+сверх",
+        "закрыт\\w*\\s+хранен\\w*\\s+сверх",
+        "хранен\\w*\\s+сверх"
+      ],
+      "patch": {
+        "room.wall_cabinets_enabled": true
+      }
+    },
+    {
+      "id": "compact_dishwasher",
+      "patterns": [
+        "(маленьк\\w*|компактн\\w*|узк\\w*).*(пмм|посудомо\\w*)",
+        "(пмм|посудомо\\w*).*(маленьк\\w*|компактн\\w*|узк\\w*)"
+      ],
+      "patch": {
+        "optional.dishwasher.enabled": true,
+        "optional.dishwasher.width_mm": 450
+      }
+    },
+    {
+      "id": "full_size_dishwasher",
+      "patterns": [
+        "(полноразмерн\\w*|побольше|больш\\w*).*(пмм|посудомо\\w*)",
+        "(пмм|посудомо\\w*).*(полноразмерн\\w*|побольше|больш\\w*)"
+      ],
+      "patch": {
+        "optional.dishwasher.enabled": true,
+        "optional.dishwasher.width_mm": 600
+      }
+    },
+    {
+      "id": "hide_all_appliances",
+      "patterns": [
+        "техник\\w*\\s+.*спрят",
+        "спрят\\w*\\s+.*техник",
+        "техник\\w*\\s+.*скрыт",
+        "скрыт\\w*\\s+.*техник",
+        "бытов\\w*\\s+техник\\w*\\s+.*скрыт",
+        "вс[яю]\\s+техник\\w*\\s+.*встро",
+        "техник\\w*\\s+.*встро",
+        "техник\\w*\\s+.*не\\s+.*отдель",
+        "не\\s+хочу\\s+.*техник\\w*.*стоя\\w*\\s+отдель"
+      ],
+      "patch": {
+        "required.refrigerator.mode": "built_in",
+        "required.hood.type": "built_in",
+        "required.microwave.type": "built_in"
+      }
+    },
+    {
+      "id": "microwave_not_on_counter",
+      "patterns": [
+        "(микроволн\\w*|свч).*(не\\s+на\\s+столешниц|не\\s+на\\s+стол|спрят\\w*\\s+.*шкаф)"
+      ],
+      "patch": {
+        "required.microwave.type": "built_in"
+      }
+    },
+    {
+      "id": "microwave_upper",
+      "patterns": [
+        "(микроволн\\w*|свч).*(убрать\\s+наверх|в\\s+верхн\\w*|в\\s+навесн\\w*)"
+      ],
+      "patch": {
+        "required.microwave.type": "upper_built_in"
+      }
+    },
+    {
+      "id": "hide_hood",
+      "patterns": [
+        "вытяж\\w*.*спрят",
+        "спрят\\w*.*вытяж"
+      ],
+      "patch": {
+        "required.hood.type": "built_in"
+      }
+    },
+    {
+      "id": "hide_fridge",
+      "patterns": [
+        "холод\\w*.*спрят",
+        "спрят\\w*.*холод"
+      ],
+      "patch": {
+        "required.refrigerator.mode": "built_in"
+      }
+    },
+    {
+      "id": "freestanding_fridge",
+      "patterns": [
+        "холод\\w*.*не\\s+встра"
+      ],
+      "patch": {
+        "required.refrigerator.mode": "freestanding"
+      }
+    },
+    {
+      "id": "solo_fridge",
+      "patterns": [
+        "холод\\w*.*(стоит|стоять)\\s+отдель"
+      ],
+      "patch": {
+        "required.refrigerator.mode": "freestanding",
+        "required.refrigerator.freestanding_installation": "solo"
+      }
+    },
+    {
+      "id": "compact_sink",
+      "patterns": [
+        "мойк\\w*.*(компактн|маленьк|узк)"
+      ],
+      "patch": {
+        "required.sink.width_mm": 400
+      }
+    },
+    {
+      "id": "larger_sink",
+      "patterns": [
+        "мойк\\w*.*(побольше|больш)"
+      ],
+      "patch": {
+        "required.sink.width_mm": 600
+      }
+    },
+    {
+      "id": "compact_hob",
+      "patterns": [
+        "вароч\\w*.*(компактн|маленьк|узк)"
+      ],
+      "patch": {
+        "required.hob.cabinet_width_mm": 300
+      }
+    },
+    {
+      "id": "large_hob",
+      "patterns": [
+        "больш\\w*\\s+вароч",
+        "вароч\\w*.*больш"
+      ],
+      "patch": {
+        "required.hob.cabinet_width_mm": 900
+      }
+    },
+    {
+      "id": "larger_hob",
+      "patterns": [
+        "вароч\\w*.*побольше"
+      ],
+      "patch": {
+        "required.hob.cabinet_width_mm": 800
+      }
+    },
+    {
+      "id": "to_ceiling",
+      "patterns": [
+        "(до\\s+потолка|в\\s+потолок)"
+      ],
+      "exclude_patterns": [
+        "не\\s+надо",
+        "без",
+        "не\\s+хочу"
+      ],
+      "patch": {
+        "room.mezzanine_enabled": true
+      }
+    },
+    {
+      "id": "not_to_ceiling",
+      "patterns": [
+        "(до\\s+потолка|в\\s+потолок)"
+      ],
+      "required_patterns": [
+        "не\\s+надо|без|не\\s+хочу"
+      ],
+      "patch": {
+        "room.mezzanine_enabled": false
+      }
+    }
+  ],
+  "llm_trigger_patterns": [
+    "спрят",
+    "скрыт",
+    "лишн",
+    "компактн",
+    "маленьк",
+    "узк",
+    "предпоч",
+    "лучше",
+    "не\\s+хочу",
+    "минимум",
+    "поменьше",
+    "побольше",
+    "полноразмерн",
+    "хранен",
+    "до\\s+потолка"
+  ]
+}

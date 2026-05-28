@@ -1,0 +1,50 @@
+WORKTOP_MIN_MM = 600
+WORKTOP_MAX_MM = 1200
+WORKTOP_TARGET_MM = 900
+
+PLINTH_HEIGHT_MM = 100
+LOWER_PROFILE_HANDLE_HEIGHT_MM = 30
+WALL_CABINET_BOTTOM_MM = 1450
+WALL_PANEL_HEIGHT_MM = 600
+BUILT_IN_HOOD_HEIGHT_MM = 400
+WALL_CABINET_DEPTH_MM = 350
+DISHDRAINER_WIDTH_OPTIONS = [400, 450, 500, 600, 800, 900]
+DISH_DRYING_MIN_WIDTH_MM = 400
+DISH_DRYING_MAX_WIDTH_MM = 900
+UPPER_CABINET_WIDTH_OPTIONS = [250, 300, 350, 400, 450]
+UPPER_CABINET_TARGET_WIDTH_MM = 300
+HOOD_POSITION_MAX_SHIFT_MM = 100
+MANDATORY_DRAWER_WIDTH_MM = 450
+CUTLERY_DRAWER_TARGET_WIDTH_MM = 600
+CUTLERY_DRAWER_MAX_WIDTH_MM = 900
+HOB_SIDE_CLEARANCE_MM = 75
+HOB_WIDTH_OPTIONS = [300, 600, 800, 900]
+DRAWER_WIDTH_STEP_MM = 50
+TALL_PROFILE_HANDLE_WIDTH_MM = 50
+TALL_COLUMN_TYPES = {"tall", "appliance_tall"}
+
+GENERATED_DRAWER_WIDTHS = [
+    900,
+    800,
+    600,
+    550,
+    500,
+    450,
+    400,
+    300,
+]
+
+PREFERRED_DRAWER_WIDTH_MM = 600
+
+AUTO_PREFERRED_VALUES = {
+    "refrigerator.mode": "built_in",
+    "sink.width_mm": 600,
+    "hob.cabinet_width_mm": 600,
+    "hood.type": "built_in",
+    "hood.width_mm": 600,
+    "dishwasher.width_mm": 600,
+    "oven.placement": "under_counter",
+    "microwave.type": "upper_built_in",
+    "microwave.width_mm": 600,
+    "microwave.height_mm": 400,
+}
